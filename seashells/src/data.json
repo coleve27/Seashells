@@ -13,7 +13,8 @@
   },
   {
     "id": 4,
-    "clicked": false
+    "clicked": false,
+    "hasPearl": true
   },
   {
     "id": 5,
