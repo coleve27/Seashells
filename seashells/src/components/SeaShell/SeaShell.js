@@ -1,4 +1,6 @@
 import React from "react";
+import "./SeaShell.css";
+import img from "./images/seashell.png";
 
 class SeaShell extends React.Component {
   constructor(props) {
@@ -24,9 +26,12 @@ class SeaShell extends React.Component {
   }
   render() {
     return (
-      <button onClick={() => this.props.handleClick(this.props)}>
-        SeaShell
-      </button>
+      <img
+        className="seashells"
+        src={img}
+        alt="Seashell"
+        onClick={() => this.props.handleClick(this.props)}
+      />
     );
   }
 }

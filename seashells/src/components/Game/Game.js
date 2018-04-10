@@ -1,5 +1,7 @@
 import React from "react";
 // import data from "../../data.json";
+import Nav from "../Nav/Nav.js";
+import Container from "../Container/Container.js";
 import SeaShell from "../SeaShell/SeaShell.js";
 import User from "../User/User.js";
 
@@ -12,7 +14,7 @@ var user = [
   }
 ];
 
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 100; i++) {
   data.push({
     id: i,
     hasPearl: false,
@@ -65,8 +67,16 @@ class Game extends React.Component {
       alert("you found the pearl");
       this.setState({ isPlacing: !this.state.isPlacing });
       this.setState({ date: (this.state.data[props.id].hasPearl = false) });
+      this.setState({
+        userData: (this.state.user[0].score = this.state.user[0].score + 1)
+      });
+      console.log(user[0].score);
     } else {
       alert("try a different pearl");
+      this.setState({
+        userData: (this.state.user[0].score = this.state.user[0].score - 1)
+      });
+      console.log(user[0].score);
     }
   };
 
@@ -74,22 +84,27 @@ class Game extends React.Component {
     console.log("render");
     return (
       <div>
-        {this.state.data.map(item => (
-          <div key={item.id}>
-            {JSON.stringify(item)}
-            <SeaShell
-              id={item.id}
-              hasPearl={item.hasPearl}
-              handleClick={
-                this.state.isPlacing
-                  ? this.userChoosesShell
-                  : this.handleItemClick
-              }
-              // userChoosesShell={this.userChoosesShell}
-            />
-          </div>
-        ))}
-        <User userData={this.state.user} />
+        <nav />
+
+        <Container>
+          {this.state.data.map(item => (
+            <div key={item.id}>
+              {/*JSON.stringify(item)*/}
+
+              <SeaShell
+                id={item.id}
+                hasPearl={item.hasPearl}
+                handleClick={
+                  this.state.isPlacing
+                    ? this.userChoosesShell
+                    : this.handleItemClick
+                }
+                // userChoosesShell={this.userChoosesShell}
+              />
+            </div>
+          ))}
+          <User userData={this.state.user} />
+        </Container>
       </div>
     );
   }

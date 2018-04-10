@@ -5,7 +5,7 @@ class User extends React.Component {
     const { name, score } = this.props.userData[0];
     console.log(name);
     return (
-      <span name={name}>
+      <span>
         {name} {score}
       </span>
     );
