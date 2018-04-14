@@ -14,7 +14,7 @@ var user = [
   }
 ];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
   data.push({
     id: i,
     hasPearl: false,
@@ -84,12 +84,12 @@ class Game extends React.Component {
     console.log("render");
     return (
       <div>
-        <nav />
+        <Nav userData={this.state.user} />
 
         <Container>
           {this.state.data.map(item => (
             <div key={item.id}>
-              {/*JSON.stringify(item)*/}
+              {JSON.stringify(item)}
 
               <SeaShell
                 id={item.id}
@@ -103,7 +103,6 @@ class Game extends React.Component {
               />
             </div>
           ))}
-          <User userData={this.state.user} />
         </Container>
       </div>
     );

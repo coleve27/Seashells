@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Game from "./components/Game/Game";
+
+import Home from "./components/Home/Home";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Game />
+        <Home />
       </div>
     );
   }

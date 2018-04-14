@@ -6,7 +6,9 @@ class User extends React.Component {
     console.log(name);
     return (
       <span>
-        {name} {score}
+        Name : {name}
+        <br />
+        Score: {score}
       </span>
     );
   }
