@@ -7,12 +7,12 @@ import User from "../User/User.js";
 
 var data = [];
 
-var user = [
-  {
-    name: "Phil",
-    score: 100
-  }
-];
+// var user = [
+//   {
+//     name: this.props.match.params.userName,
+//     score: 100
+//   }
+// ];
 
 for (let i = 0; i < 10; i++) {
   data.push({
@@ -26,10 +26,20 @@ class Game extends React.Component {
   state = {
     isPlacing: false,
     data,
-    user
+    user: {
+      name: this.props.match.params.userName,
+      score: 100
+    }
   };
 
   componentDidMount() {
+    const { params } = this.props.match;
+    // first reinstate our localStorage
+    const localStorageRef = localStorage.getItem(params.userId);
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
+
     this.setState({ data: this.shufflePearl(this.state.data) });
   }
 
@@ -68,15 +78,15 @@ class Game extends React.Component {
       this.setState({ isPlacing: !this.state.isPlacing });
       this.setState({ date: (this.state.data[props.id].hasPearl = false) });
       this.setState({
-        userData: (this.state.user[0].score = this.state.user[0].score + 1)
+        userData: (this.state.user.score = this.state.user.score + 1)
       });
-      console.log(user[0].score);
+      // console.log(user[0].score);
     } else {
       alert("try a different pearl");
       this.setState({
-        userData: (this.state.user[0].score = this.state.user[0].score - 1)
+        userData: (this.state.user.score = this.state.user.score - 1)
       });
-      console.log(user[0].score);
+      // console.log(user[0].score);
     }
   };
 

@@ -2,7 +2,7 @@ import React from "react";
 
 class User extends React.Component {
   render() {
-    const { name, score } = this.props.userData[0];
+    const { name, score } = this.props.userData;
     console.log(name);
     return (
       <span>
